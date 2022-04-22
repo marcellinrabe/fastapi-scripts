@@ -8,8 +8,6 @@ from pydantic import BaseModel
 from uvicorn import run
 
 
-
-    
 class Message(BaseModel):
     message: str
     
