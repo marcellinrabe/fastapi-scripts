@@ -32,13 +32,9 @@ async def home():
 
 @root.get('/todos/', response_model=List[ToDo])
 async def get_todos():
-    """
-        Il est tout à fait possible de faire en sorte de renvoyer une liste
-        avec fastapi, néan-moins la reponse est en réalité en json.
-        C'est juste de faire en sorte XD
-    """
-
+    """ Il est tout à fait possible de faire en sorte de renvoyer une liste avec fastapi """
     return todos
+
 
 @root.get("/todo/{id}/")
 async def get_todo(id: int):
@@ -49,11 +45,13 @@ async def get_todo(id: int):
 
         raise HTTPException(status_code=404, detail="tache non trouvé")
 
+        
 @root.post("/todos/add/")
 async def add(new_ToDo: ToDo):
 
     todos.append(new_ToDo)
     return new_ToDo
+
 
 @root.put("/todos/update/{id}/")
 async def update(id: int, new_ToDo: ToDo):
@@ -63,6 +61,7 @@ async def update(id: int, new_ToDo: ToDo):
     except:
         raise HTTPException(status_code=404, detail="tache non trouvé")
 
+        
 @root.delete("/todos/delete/{id}")
 async def delete(id: int):
 
